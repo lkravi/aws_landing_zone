@@ -212,5 +212,3 @@
 ```
 
 ---
-
-*These diagrams use ASCII art for maximum compatibility. For production documentation, consider using tools like draw.io, Lucidchart, or AWS Architecture Icons.*

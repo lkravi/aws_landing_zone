@@ -107,7 +107,7 @@ Estimated monthly cost for minimal setup: ~$100-200/month
 
 ## License
 
-MIT License - Feel free to use this for learning and demonstration purposes.
+GNU GENERAL PUBLIC LICENSE - Feel free to use this for learning and demonstration purposes.
 
 ## Author
 
