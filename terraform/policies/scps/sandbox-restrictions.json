@@ -1,0 +1,70 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyExpensiveEC2Instances",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "ForAnyValue:StringLike": {
+          "ec2:InstanceType": [
+            "*.metal",
+            "*.8xlarge",
+            "*.10xlarge",
+            "*.12xlarge",
+            "*.16xlarge",
+            "*.18xlarge",
+            "*.24xlarge",
+            "p2.*",
+            "p3.*",
+            "p4*",
+            "g3.*",
+            "g4*",
+            "g5*",
+            "inf1.*",
+            "dl1.*",
+            "trn1.*"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyExpensiveRDSInstances",
+      "Effect": "Deny",
+      "Action": [
+        "rds:CreateDBInstance",
+        "rds:ModifyDBInstance"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ForAnyValue:StringLike": {
+          "rds:DatabaseClass": [
+            "db.*.8xlarge",
+            "db.*.12xlarge",
+            "db.*.16xlarge",
+            "db.*.24xlarge"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyOrganizationAccess",
+      "Effect": "Deny",
+      "Action": [
+        "organizations:*",
+        "account:*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyIAMUserCreation",
+      "Effect": "Deny",
+      "Action": [
+        "iam:CreateUser",
+        "iam:CreateAccessKey"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

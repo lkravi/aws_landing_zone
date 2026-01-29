@@ -1,0 +1,73 @@
+# -----------------------------------------------------------------------------
+# Example Terraform Variables
+# Copy this file to terraform.tfvars and update with your values
+# -----------------------------------------------------------------------------
+
+# AWS Profile (configured via: aws configure --profile techcorp-admin)
+aws_profile = "techcorp-admin"
+
+# Primary region (Sydney)
+primary_region = "ap-southeast-2"
+
+# Organization name (used in resource naming)
+organization_name = "techcorp"
+
+# -----------------------------------------------------------------------------
+# EMAIL CONFIGURATION - Choose ONE option:
+# -----------------------------------------------------------------------------
+
+# OPTION 1: Use Gmail/Outlook + alias (RECOMMENDED - simplest!)
+# Just provide your email - aliases are auto-generated
+# Example: If you set "john@gmail.com", it creates:
+#   - john+aws-security@gmail.com
+#   - john+aws-logs@gmail.com
+#   - etc.
+# All emails go to your single inbox!
+
+base_email = "your.email@gmail.com"
+
+# OPTION 2: Manually specify each email (if you have multiple domains)
+# Uncomment and fill in if you prefer manual control:
+#
+# account_emails = {
+#   security_tooling    = "aws-security@yourdomain.com"
+#   log_archive         = "aws-logs@yourdomain.com"
+#   network_hub         = "aws-network@yourdomain.com"
+#   shared_services     = "aws-shared@yourdomain.com"
+#   prod_engineering    = "aws-prod-eng@yourdomain.com"
+#   prod_data           = "aws-prod-data@yourdomain.com"
+#   dev_engineering     = "aws-dev-eng@yourdomain.com"
+#   staging_engineering = "aws-staging@yourdomain.com"
+#   sandbox_engineering = "aws-sandbox@yourdomain.com"
+# }
+
+# -----------------------------------------------------------------------------
+# ACCOUNT CREATION
+# -----------------------------------------------------------------------------
+# Set to true ONLY when you're ready to create member accounts
+# WARNING: AWS accounts cannot be deleted via Terraform!
+
+create_accounts = true
+
+# -----------------------------------------------------------------------------
+# IAM IDENTITY CENTER
+# -----------------------------------------------------------------------------
+# Set to true AFTER you enable IAM Identity Center in AWS Console
+# Go to: AWS Console > IAM Identity Center > Enable
+# Then set this to true and run terraform apply again
+
+enable_identity_center = true
+
+# -----------------------------------------------------------------------------
+# DEMO SSO USERS
+# -----------------------------------------------------------------------------
+# Set to true to create demo users for testing SSO access
+# Users will receive password setup emails at their alias addresses:
+#   - admin        -> your.email+sso-admin@gmail.com
+#   - security-lead -> your.email+sso-security@gmail.com
+#   - eng-lead     -> your.email+sso-eng-lead@gmail.com
+#   - developer    -> your.email+sso-dev@gmail.com
+#   - data-scientist -> your.email+sso-datascience@gmail.com
+#   - auditor      -> your.email+sso-auditor@gmail.com
+
+create_demo_users = true
